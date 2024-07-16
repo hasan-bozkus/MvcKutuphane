@@ -1,0 +1,33 @@
+﻿@model MvcKutuphane.Models.Entities.Yazar
+@{
+    ViewBag.Title = "YazarGuncelle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>YazarGuncelle</h2>
+
+@using (Html.BeginForm("YazarGuncelle", "Yazar", FormMethod.Post))
+{
+    <div style="margin-bottom:15px;"></div>
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.YazarID)
+
+        <div style="margin-bottom:15px;">
+            <label>Yazar Adı: </label>
+            @Html.TextBoxFor(x => x.YazarAd, new { @Class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px;">
+            <label>Yazar Soyadı: </label>
+            @Html.TextBoxFor(x => x.YazarSoyad, new { @Class = "form-control" })
+        </div>
+        <div style="margin-bottom:15px;">
+            <label>Yazar Detay Bilgisi: </label>
+            @Html.TextAreaFor(x => x.YazarDetay, 10, 3, new { @Class = "form-control" })
+        </div>
+
+        <div style="margin-bottom:15px;">
+            <button class="btn btn-warning">Yazar Bilgilerini Güncelle</button>
+        </div>
+    </div>
+}

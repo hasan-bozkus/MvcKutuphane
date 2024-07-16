@@ -1,0 +1,34 @@
+﻿@model List<MvcKutuphane.Models.Entities.Yazar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    int count = 0;
+}
+
+<h2>Yazarlar</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Detay</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.YazarAd</td>
+            <td>@item.YazarSoyad</td>
+            <td>@item.YazarDetay</td>
+            <td>@Html.ActionLink("Sil", "YazarSil", new { id = item.YazarID }, new { @Class = "btn btn-danger", onclick="return confirm('Silmek istediğinize emin misiniz?')" })</td>
+            <td><a href="/Yazar/YazarGuncelle/@item.YazarID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+
+<a class="btn btn-primary" href="/Yazar/YazarEkle">Yeni Yazar Ekle</a>
