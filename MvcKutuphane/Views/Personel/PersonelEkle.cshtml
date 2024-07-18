@@ -1,0 +1,21 @@
+﻿@model MvcKutuphane.Models.Entities.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Personel Ekle</h2>
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px;">
+        <label>Personel Adı</label>
+        @*<input type="text" class="form-control" name="PersonelAd" />*@
+        @Html.TextBoxFor(x => x.PersonelAd, new { @Class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PersonelAd, "", new { @style = "color:forestgreen" })
+    </div>
+    <div style="margin-top:15px;">
+        <button class="btn btn-info"> Personeli Ekle </button>
+    </div>
+</form>
+
