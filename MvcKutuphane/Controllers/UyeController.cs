@@ -13,11 +13,11 @@ namespace MvcKutuphane.Controllers
     {
 
         MvcKutuphaneYonetimSistemiEntities db = new MvcKutuphaneYonetimSistemiEntities();
-    
-        public ActionResult Index(int page = 0)
+
+        public ActionResult Index(int page = 1)
         {
             //var values = db.Uyeler.ToList();
-            var values = db.Uyeler.ToList().ToPagedList(page, 8);
+            var values = db.Uyeler.ToList().ToPagedList(page, 3);
             return View(values);
         }
 
@@ -67,7 +67,8 @@ namespace MvcKutuphane.Controllers
             result.UyeOkul = uyeler.UyeOkul;
             result.UyeAd = uyeler.UyeAd;
             result.Telefon = uyeler.Telefon;
-            return View();
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
