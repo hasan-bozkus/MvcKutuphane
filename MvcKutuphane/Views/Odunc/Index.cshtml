@@ -1,0 +1,36 @@
+﻿@model List<MvcKutuphane.Models.Entities.Hareketler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    int count = 0;
+}
+
+<h2>Ödünç Kitap Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>İşlem Id</th>
+        <th>Kitap Adı</th>
+        <th>Üye</th>
+        <th>Personel</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+-        <th>İade Al</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <td>@item.HareketID</td>
+            <td>@item.Kitap1.KitapAd</td>
+            <td>@item.Uyeler.UyeAd @item.Uyeler.UyeSoyad</td>
+            <td>@item.Personel1.PersonelAd</td>
+            <td>@(((DateTime)item.AlisTarih).ToString("dd-MM-yyyy"))</td>
+            <td>@(((DateTime)item.İadeTarih).ToString("dd-MM-yyyy"))</td>
+            <td><a href="/Odunc/OduncIade/@item.HareketID" class="btn btn-default" style="background-color:#64d8ca; color:white">Kitabı İade Et</a></td>
+        </tr>
+    }
+</table>
+
+<br />

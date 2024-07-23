@@ -11,8 +11,7 @@ namespace MvcKutuphane.Models.Entities
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Uyeler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,17 +22,10 @@ namespace MvcKutuphane.Models.Entities
         }
     
         public int UyeID { get; set; }
-
-        [Required(ErrorMessage = "Bu alan boþ geçilemez")]
-        [StringLength(20, ErrorMessage = "En fazla 20 karakter girebilirsiniz")]
         public string UyeAd { get; set; }
         public string UyeSoyad { get; set; }
-
-        //mail formatý
         public string EMail { get; set; }
         public string KullaniciAd { get; set; }
-
-        [StringLength(10, ErrorMessage = "En fazla 10 karakter girebilirsiniz")]
         public string Sifre { get; set; }
         public string Fotograf { get; set; }
         public string Telefon { get; set; }

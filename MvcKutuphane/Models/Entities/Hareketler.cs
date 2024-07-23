@@ -23,7 +23,7 @@ namespace MvcKutuphane.Models.Entities
         public int HareketID { get; set; }
         public Nullable<int> Kitap { get; set; }
         public Nullable<int> Uye { get; set; }
-        public Nullable<int> Personel { get; set; }
+        public Nullable<byte> Personel { get; set; }
         public Nullable<System.DateTime> AlisTarih { get; set; }
         public Nullable<System.DateTime> İadeTarih { get; set; }
     
@@ -31,5 +31,6 @@ namespace MvcKutuphane.Models.Entities
         public virtual ICollection<Cezalar> Cezalar { get; set; }
         public virtual Kitap Kitap1 { get; set; }
         public virtual Uyeler Uyeler { get; set; }
+        public virtual Personel Personel1 { get; set; }
     }
 }

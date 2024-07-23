@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Kasa" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Kategoriler" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Kitap" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Personel" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Personel" Width="1.5" PointX="8.375" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Uyeler" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Yazar" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
@@ -20,6 +20,7 @@
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Hareketler_Uyeler" ManuallyRouted="false" />
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Kitap_Kategoriler" ManuallyRouted="false" />
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Kitap_Yazar" ManuallyRouted="false" />
+        <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Hareketler_Personel" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

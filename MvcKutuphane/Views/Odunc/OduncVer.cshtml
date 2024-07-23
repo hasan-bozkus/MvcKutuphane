@@ -1,0 +1,36 @@
+﻿@model MvcKutuphane.Models.Entities.Hareketler
+@{
+    ViewBag.Title = "OduncVer";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ödünç Kitap Ver</h2>
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Uye Id: </label>
+        @Html.TextBoxFor(x => x.Uye, new { @Class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Id: </label>
+        @Html.TextBoxFor(x => x.Kitap, new { @Class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Id: </label>
+        @Html.TextBoxFor(x => x.Personel, new { @Class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Alış Tarihi: </label>
+        <input type="text" name="AlisTarih" class="form-control" value="@DateTime.Now.ToShortDateString()" />
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap İade Tarihi: </label>
+        <input type="text" name="İadeTarih" class="form-control" value="@DateTime.Now.AddDays(7).ToShortDateString()" />
+    </div>
+    
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color:#a330b5; color: white" > Kitabı Ödünç Ver </button>
+    </div>
+</form>
+
