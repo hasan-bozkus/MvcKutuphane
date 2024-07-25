@@ -13,7 +13,7 @@ namespace MvcKutuphane.Controllers
 
         public ActionResult Index()
         {
-            var values = db.Hareketler.ToList();
+            var values = db.Hareketler.Where(x=>x.İslemDurum == false).ToList();
             return View(values);
         }
 
@@ -26,6 +26,7 @@ namespace MvcKutuphane.Controllers
         [HttpPost]
         public ActionResult OduncVer(Hareketler hareketler)
         {
+            hareketler.İslemDurum = false;
             db.Hareketler.Add(hareketler);
             db.SaveChanges();
             return RedirectToAction("OduncVer");
