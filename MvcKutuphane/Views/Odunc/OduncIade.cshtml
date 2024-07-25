@@ -1,0 +1,44 @@
+﻿@model MvcKutuphane.Models.Entities.Hareketler
+@{
+    ViewBag.Title = "OduncIade";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>OduncIade</h2>
+
+@using (Html.BeginForm("OduncIade", "Odunc", FormMethod.Post))
+{
+    <div style="margin-bottom:15px;"></div>
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.HareketID)
+
+        @Html.Label("kitap Adı")
+        @Html.TextBoxFor(x => x.Kitap1.KitapAd, new { @Class = "form-control" })
+        <br />
+
+        @Html.Label("Üye")
+        @Html.TextBoxFor(x => x.Uyeler.UyeAd, new { @Class = "form-control" })
+        <br />
+
+        @Html.Label("Personel Adı")
+        @Html.TextBoxFor(x => x.Personel1.PersonelAd, new { @Class = "form-control" })
+        <br />
+
+        @Html.Label("Alış Tarihi")
+        @Html.TextBoxFor(x => x.AlisTarih, "{0: dd-MM-yyyy}", new { @Class = "form-control" })
+        <br />
+
+        @Html.Label("Normal İade Tarihi")
+        @Html.TextBoxFor(x => x.İadeTarih, "{0: dd-MM-yyyy}", new { @Class = "form-control" })
+        <br />
+
+        @Html.Label("Üyenin Getirdiği Tarih Tarihi")
+        <input type="text" name="UyeGetirTarih" class="form-control" value="@DateTime.Now.ToShortDateString()" />
+        <br />
+
+    </div>
+    <div>
+        <button class="btn btn-default" style="background-color:#64d8ca; color:white"> Ödünç kitabı Geri Al </button>
+    </div>
+}

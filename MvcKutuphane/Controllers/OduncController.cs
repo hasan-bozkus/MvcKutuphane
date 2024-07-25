@@ -31,9 +31,22 @@ namespace MvcKutuphane.Controllers
             return RedirectToAction("OduncVer");
         }
 
-        public ActionResult OduncIade()
+
+        [HttpGet]
+        public ActionResult OduncIade(int id)
         {
-            return View();
+            var result = db.Hareketler.Find(id);
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult OduncIade(Hareketler hareketler)
+        {
+            var result = db.Hareketler.Find(hareketler.HareketID);
+            result.UyeGetirTarih = hareketler.UyeGetirTarih;
+            result.İslemDurum = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
