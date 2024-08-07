@@ -16,6 +16,15 @@
           <Property Name="Para" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Hareket" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="HakkimdaID" />
+          </Key>
+          <Property Name="HakkimdaID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Hareketler">
           <Key>
             <PropertyRef Name="HareketID" />
@@ -28,6 +37,16 @@
           <Property Name="İadeTarih" Type="smalldatetime" />
           <Property Name="UyeGetirTarih" Type="smalldatetime" />
           <Property Name="İslemDurum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Iletisim">
+          <Key>
+            <PropertyRef Name="IletisimID" />
+          </Key>
+          <Property Name="IletisimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mesaj" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Kasa">
           <Key>
@@ -56,6 +75,7 @@
           <Property Name="YayinEvi" Type="nvarchar" MaxLength="50" />
           <Property Name="Sayfa" Type="varchar" MaxLength="4" />
           <Property Name="Durum" Type="bit" />
+          <Property Name="KitapResim" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Personel">
           <Key>
@@ -184,6 +204,7 @@
         <EntityContainer Name="MvcKutuphaneYonetimSistemiModelStoreContainer">
           <EntitySet Name="Cezalar" EntityType="Self.Cezalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hareketler" EntityType="Self.Hareketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iletisim" EntityType="Self.Iletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kasa" EntityType="Self.Kasa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kitap" EntityType="Self.Kitap" Schema="dbo" store:Type="Tables" />
@@ -191,6 +212,12 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yazar" EntityType="Self.Yazar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hakkimizda" EntityType="Self.Hakkimizda" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Hakkimizda].[HakkimdaID] AS [HakkimdaID], 
+    [Hakkimizda].[Aciklama] AS [Aciklama]
+    FROM [dbo].[Hakkimizda] AS [Hakkimizda]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Cezalar_Hareketler" Association="Self.FK_Cezalar_Hareketler">
             <End Role="Hareketler" EntitySet="Hareketler" />
             <End Role="Cezalar" EntitySet="Cezalar" />
@@ -285,6 +312,7 @@
           <NavigationProperty Name="Hareketler" Relationship="Self.FK_Hareketler_Kitap" FromRole="Kitap" ToRole="Hareketler" />
           <NavigationProperty Name="Kategoriler" Relationship="Self.FK_Kitap_Kategoriler" FromRole="Kitap" ToRole="Kategoriler" />
           <NavigationProperty Name="Yazar1" Relationship="Self.FK_Kitap_Yazar" FromRole="Kitap" ToRole="Yazar" />
+          <Property Name="KitapResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Personel">
           <Key>
@@ -440,6 +468,8 @@
             <End Role="Personel" EntitySet="Personel" />
             <End Role="Hareketler" EntitySet="Hareketler" />
           </AssociationSet>
+          <EntitySet Name="Hakkimizda" EntityType="MvcKutuphaneYonetimSistemiModel.Hakkimizda" />
+          <EntitySet Name="Iletisim" EntityType="MvcKutuphaneYonetimSistemiModel.Iletisim" />
         </EntityContainer>
         <Association Name="FK_Hareketler_Personel">
           <End Type="MvcKutuphaneYonetimSistemiModel.Personel" Role="Personel" Multiplicity="0..1" />
@@ -453,6 +483,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="HakkimdaID" />
+          </Key>
+          <Property Name="HakkimdaID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Iletisim">
+          <Key>
+            <PropertyRef Name="IletisimID" />
+          </Key>
+          <Property Name="IletisimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -505,6 +552,7 @@
           <EntitySetMapping Name="Kitap">
             <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Kitap">
               <MappingFragment StoreEntitySet="Kitap">
+                <ScalarProperty Name="KitapResim" ColumnName="KitapResim" />
                 <ScalarProperty Name="KitapID" ColumnName="KitapID" />
                 <ScalarProperty Name="KitapAd" ColumnName="KitapAd" />
                 <ScalarProperty Name="Kategori" ColumnName="Kategori" />
@@ -557,6 +605,25 @@
                 <ScalarProperty Name="YazarAd" ColumnName="YazarAd" />
                 <ScalarProperty Name="YazarSoyad" ColumnName="YazarSoyad" />
                 <ScalarProperty Name="YazarDetay" ColumnName="YazarDetay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hakkimizda">
+            <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Hakkimizda">
+              <MappingFragment StoreEntitySet="Hakkimizda">
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="HakkimdaID" ColumnName="HakkimdaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iletisim">
+            <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Iletisim">
+              <MappingFragment StoreEntitySet="Iletisim">
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="IletisimID" ColumnName="IletisimID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

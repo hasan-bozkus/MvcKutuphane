@@ -21,6 +21,8 @@
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Kitap_Kategoriler" ManuallyRouted="false" />
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Kitap_Yazar" ManuallyRouted="false" />
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Hareketler_Personel" />
+        <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Hakkimizda" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Iletisim" Width="1.5" PointX="1" PointY="8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
