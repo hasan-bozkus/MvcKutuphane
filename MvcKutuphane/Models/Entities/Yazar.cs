@@ -11,7 +11,8 @@ namespace MvcKutuphane.Models.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Yazar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,17 @@ namespace MvcKutuphane.Models.Entities
         {
             this.Kitap = new HashSet<Kitap>();
         }
-    
+
         public int YazarID { get; set; }
+
+        [Required(ErrorMessage = "Yazar adý boþ geçilemez!")]
         public string YazarAd { get; set; }
+
+        [Required(ErrorMessage = "Yazar soyadý boþ geçilemez!")]
+        [StringLength(20, ErrorMessage = "Soyad 20 karaterden uzun olamaz!")]
         public string YazarSoyad { get; set; }
         public string YazarDetay { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kitap> Kitap { get; set; }
     }

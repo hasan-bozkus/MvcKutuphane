@@ -268,7 +268,20 @@
     <Content Include="web2\js\moment-2.2.1.js" />
     <Content Include="web2\js\site.js" />
     <Content Include="web2\js\underscore-min.js" />
+    <Content Include="web2\Resimler\book1.jpg" />
+    <Content Include="web2\Resimler\book2.jpg" />
+    <Content Include="web2\Resimler\book3.jpg" />
+    <Content Include="web2\Resimler\book4.jpg" />
+    <Content Include="web2\Resimler\book5.jpg" />
+    <Content Include="web2\Resimler\img1.jpg" />
     <Content Include="web2\w3layouts-License.txt" />
+    <Content Include="webhava\css\style.css" />
+    <Content Include="webhava\images\bg.jpg" />
+    <Content Include="webhava\images\img1.jpg" />
+    <Content Include="webhava\index.html" />
+    <Content Include="webhava\js\jquery-2.1.4.min.js" />
+    <Content Include="webhava\js\skycons.js" />
+    <Content Include="webhava\w3layouts-License.txt" />
     <Content Include="web\.gitignore" />
     <Content Include="web\css\freelancer.css" />
     <Content Include="web\css\freelancer.min.css" />
@@ -409,6 +422,9 @@
     <Content Include="web\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Vitrin\Index.cshtml" />
     <Content Include="Views\Istatistik\Index.cshtml" />
+    <Content Include="Views\Istatistik\Hava.cshtml" />
+    <Content Include="Views\Istatistik\HavaKart.cshtml" />
+    <Content Include="Views\Istatistik\Galeri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

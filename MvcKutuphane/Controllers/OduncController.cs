@@ -33,15 +33,20 @@ namespace MvcKutuphane.Controllers
         }
 
 
-        [HttpGet]
         public ActionResult OduncIade(int id)
         {
-            var result = db.Hareketler.Find(id);
+            Hareketler hareketler = new Hareketler();
+            hareketler.HareketID = id;
+
+            var result = db.Hareketler.Find(hareketler.HareketID);
+            DateTime baslangicTarih = DateTime.Parse(result.İadeTarih.ToString());
+            DateTime bitisTarih = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            TimeSpan timeSpan = bitisTarih - baslangicTarih;
+            ViewBag.timeSpan = timeSpan.TotalDays;
             return View(result);
         }
 
-        [HttpPost]
-        public ActionResult OduncIade(Hareketler hareketler)
+        public ActionResult OduncGuncelle(Hareketler hareketler)
         {
             var result = db.Hareketler.Find(hareketler.HareketID);
             result.UyeGetirTarih = hareketler.UyeGetirTarih;
