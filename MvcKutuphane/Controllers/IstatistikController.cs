@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcKutuphane.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +10,22 @@ namespace MvcKutuphane.Controllers
 {
     public class IstatistikController : Controller
     {
+        MvcKutuphaneYonetimSistemiEntities db = new MvcKutuphaneYonetimSistemiEntities();
+
         public ActionResult Index()
         {
+            var uyeCount = db.Uyeler.Count();
+            ViewBag.uyeCount = uyeCount;
+
+            var kitapCount = db.Kitap.Count();
+            ViewBag.kitapCount = kitapCount;
+
+            var emanetKitap = db.Kitap.Where(x => x.Durum == false).Count();
+            ViewBag.emanetKitap = emanetKitap;
+
+            var kasaTutar = db.Cezalar.Sum(x => x.Para);
+            ViewBag.kasaTutar = kasaTutar;
+
             return View();
         }
 
