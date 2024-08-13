@@ -201,6 +201,11 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BugunEmanetVerilenKitapSayisi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EnAktifUye" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EnBasariliPersonel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EnCokOkunanKitap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="EnFazlaKitapYazar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MvcKutuphaneYonetimSistemiModelStoreContainer">
           <EntitySet Name="Cezalar" EntityType="Self.Cezalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hareketler" EntityType="Self.Hareketler" Schema="dbo" store:Type="Tables" />
@@ -470,6 +475,11 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           </AssociationSet>
           <EntitySet Name="Hakkimizda" EntityType="MvcKutuphaneYonetimSistemiModel.Hakkimizda" />
           <EntitySet Name="Iletisim" EntityType="MvcKutuphaneYonetimSistemiModel.Iletisim" />
+          <FunctionImport Name="EnFazlaKitapYazar" ReturnType="Collection(String)" />
+          <FunctionImport Name="EnAktifUye" ReturnType="Collection(String)" />
+          <FunctionImport Name="EnCokOkunanKitap" ReturnType="Collection(String)" />
+          <FunctionImport Name="EnBasariliPersonel" ReturnType="Collection(String)" />
+          <FunctionImport Name="BugunEmanetVerilenKitapSayisi" ReturnType="Collection(Int32)" />
         </EntityContainer>
         <Association Name="FK_Hareketler_Personel">
           <End Type="MvcKutuphaneYonetimSistemiModel.Personel" Role="Personel" Multiplicity="0..1" />
@@ -627,6 +637,11 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="EnFazlaKitapYazar" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.EnFazlaKitapYazar" />
+          <FunctionImportMapping FunctionImportName="EnAktifUye" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.EnAktifUye" />
+          <FunctionImportMapping FunctionImportName="EnCokOkunanKitap" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.EnCokOkunanKitap" />
+          <FunctionImportMapping FunctionImportName="EnBasariliPersonel" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.EnBasariliPersonel" />
+          <FunctionImportMapping FunctionImportName="BugunEmanetVerilenKitapSayisi" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.BugunEmanetVerilenKitapSayisi" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
