@@ -26,7 +26,7 @@ namespace MvcKutuphane.Controllers
         public ActionResult Index2(Uyeler uyeler)
         {
             var user = (string)Session["EMail"];
-            var member = db.Uyeler.FirstOrDefault(x=> x.EMail == user);
+            var member = db.Uyeler.FirstOrDefault(x => x.EMail == user);
             member.Sifre = uyeler.Sifre;
             member.UyeAd = uyeler.UyeAd;
             member.UyeSoyad = uyeler.UyeSoyad;
@@ -35,6 +35,14 @@ namespace MvcKutuphane.Controllers
             member.Fotograf = uyeler.Fotograf;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Kitaplarim()
+        {
+            var user = (string)Session["EMail"];
+            var id = db.Uyeler.Where(x => x.EMail == user.ToString()).Select(z => z.UyeID).FirstOrDefault();
+            var values = db.Hareketler.Where(x => x.Uye == id).ToList();
+            return View(values);
         }
     }
 }

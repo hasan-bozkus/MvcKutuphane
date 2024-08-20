@@ -1,0 +1,25 @@
+﻿@model List<MvcKutuphane.Models.Entities.Mesajlar>
+@{
+    ViewBag.Title = "GidenMesaj";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>GidenMesaj</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Alıcı</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Alici</td>
+            <td>@item.Konu</td>
+            <td>@item.Icerik</td>
+            <td>@(((DateTime)item.Tarih).ToString("dd-MM-yyyy"))</td>
+        </tr>
+    }
+</table>
+<br />

@@ -23,6 +23,7 @@
         <AssociationConnector Association="MvcKutuphaneYonetimSistemiModel.FK_Hareketler_Personel" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Hakkimizda" Width="1.5" PointX="8.375" PointY="6.75" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Iletisim" Width="1.5" PointX="1" PointY="8" />
+        <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Mesajlar" Width="1.5" PointX="3.625" PointY="8.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

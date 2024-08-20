@@ -77,6 +77,17 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <Property Name="Durum" Type="bit" />
           <Property Name="KitapResim" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Mesajlar">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gonderen" Type="nvarchar" MaxLength="50" />
+          <Property Name="Alici" Type="nvarchar" MaxLength="50" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Icerik" Type="nvarchar" MaxLength="500" />
+          <Property Name="Tarih" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="Personel">
           <Key>
             <PropertyRef Name="PersonelID" />
@@ -213,6 +224,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <EntitySet Name="Kasa" EntityType="Self.Kasa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kitap" EntityType="Self.Kitap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesajlar" EntityType="Self.Mesajlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
@@ -480,6 +492,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <FunctionImport Name="EnCokOkunanKitap" ReturnType="Collection(String)" />
           <FunctionImport Name="EnBasariliPersonel" ReturnType="Collection(String)" />
           <FunctionImport Name="BugunEmanetVerilenKitapSayisi" ReturnType="Collection(Int32)" />
+          <EntitySet Name="Mesajlar" EntityType="MvcKutuphaneYonetimSistemiModel.Mesajlar" />
         </EntityContainer>
         <Association Name="FK_Hareketler_Personel">
           <End Type="MvcKutuphaneYonetimSistemiModel.Personel" Role="Personel" Multiplicity="0..1" />
@@ -509,6 +522,17 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mesaj" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Mesajlar">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gonderen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Alici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -642,6 +666,18 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <FunctionImportMapping FunctionImportName="EnCokOkunanKitap" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.EnCokOkunanKitap" />
           <FunctionImportMapping FunctionImportName="EnBasariliPersonel" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.EnBasariliPersonel" />
           <FunctionImportMapping FunctionImportName="BugunEmanetVerilenKitapSayisi" FunctionName="MvcKutuphaneYonetimSistemiModel.Store.BugunEmanetVerilenKitapSayisi" />
+          <EntitySetMapping Name="Mesajlar">
+            <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Mesajlar">
+              <MappingFragment StoreEntitySet="Mesajlar">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Alici" ColumnName="Alici" />
+                <ScalarProperty Name="Gonderen" ColumnName="Gonderen" />
+                <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

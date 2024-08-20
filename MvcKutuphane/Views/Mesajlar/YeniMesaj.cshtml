@@ -1,0 +1,28 @@
+﻿@model MvcKutuphane.Models.Entities.Mesajlar
+@{
+    ViewBag.Title = "YeniMesaj";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px;">
+        <label>Alıcı E-Posta</label>
+        @*<input type="text" class="form-control" name="PersonelAd" />*@
+        @Html.TextBoxFor(x => x.Alici, new { @Class = "form-control" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>Konu</label>
+        @*<input type="text" class="form-control" name="PersonelAd" />*@
+        @Html.TextBoxFor(x => x.Konu, new { @Class = "form-control" })
+    </div>
+    <div style="margin-top:15px;">
+        <label>Mesajınız</label>
+        @*<input type="text" class="form-control" name="PersonelAd" />*@
+        @Html.TextAreaFor(x => x.Icerik, 3, 5, new { @Class = "form-control" })
+    </div>
+    <div style="margin-top:15px;">
+        <button class="btn btn-info"> Gönder </button>
+    </div>
+</form>
