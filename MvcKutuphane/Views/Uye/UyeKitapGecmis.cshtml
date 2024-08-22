@@ -1,0 +1,28 @@
+﻿@model List<MvcKutuphane.Models.Entities.Hareketler>
+@{
+    ViewBag.Title = "UyeKitapGecmis";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.memberName</h2>
+
+<br />
+
+<table class="table table-danger">
+    <tr>
+        <td>Kitap Adı</td>
+        <td>Personel</td>
+        <td>Alış Tarihi</td>
+        <td>İade Tarihi</td>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Kitap1.KitapAd</td>
+            <td>@item.Personel1.PersonelAd</td>
+            <td>@(((DateTime)item.AlisTarih).ToString("dd-MM-yyyy"))</td>
+            <td>@Convert.ToDateTime(item.UyeGetirTarih).ToString("dd-MM-yyyy")</td>
+        </tr>
+    }
+</table>

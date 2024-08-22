@@ -22,6 +22,7 @@ namespace MvcKutuphane.Models.Entities
     
         public byte KategoriID { get; set; }
         public string KategoriAd { get; set; }
+        public Nullable<bool> Durum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kitap> Kitap { get; set; }

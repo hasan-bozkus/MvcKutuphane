@@ -1,0 +1,28 @@
+﻿@model List<MvcKutuphane.Models.Entities.Kitap>
+@{
+    ViewBag.Title = "YazarKitaplar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    int count = 0;
+}
+
+<h2>@ViewBag.writerName</h2>
+<br />
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Kitap Adı</th>
+        <th>Kategori</th>
+        <th>Yayınevi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.KitapAd</td>
+            <td>@item.Kategoriler.KategoriAd</td>
+            <td>@item.YayinEvi</td>
+        </tr>
+    }
+</table>

@@ -62,6 +62,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           </Key>
           <Property Name="KategoriID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durum" Type="bit" />
         </EntityType>
         <EntityType Name="Kitap">
           <Key>
@@ -313,6 +314,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <Property Name="KategoriID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kitap" Relationship="Self.FK_Kitap_Kategoriler" FromRole="Kategoriler" ToRole="Kitap" />
+          <Property Name="Durum" Type="Boolean" />
         </EntityType>
         <EntityType Name="Kitap">
           <Key>
@@ -578,6 +580,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <EntitySetMapping Name="Kategoriler">
             <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Kategoriler">
               <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
                 <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
               </MappingFragment>

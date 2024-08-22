@@ -70,5 +70,13 @@ namespace MvcKutuphane.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult UyeKitapGecmis(int id)
+        {
+            var values = db.Hareketler.Where(x => x.Uye == id).ToList();
+            var memberName = db.Uyeler.Where(x => x.UyeID == id).Select(y => y.UyeAd + " " + y.UyeSoyad).FirstOrDefault();
+            ViewBag.memberName = memberName;
+            return View(values);
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace MvcKutuphane.Controllers
 
         public ActionResult Index()
         {
-            var values = db.Kategoriler.ToList();
+            var values = db.Kategoriler.Where(x => x.Durum == true).ToList();
             return View(values);
         }
 
@@ -35,7 +35,8 @@ namespace MvcKutuphane.Controllers
         public ActionResult KategoriSil(int id)
         {
             var values = db.Kategoriler.Find(id);
-            db.Kategoriler.Remove(values);
+            //db.Kategoriler.Remove(values);
+            values.Durum = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
