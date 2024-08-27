@@ -1,0 +1,65 @@
+﻿@model List<MvcKutuphane.Models.Entities.Duyurular>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    int count = 0;
+
+    string renk = "";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootsrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<h2>Duyurular</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kategori</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>İçerik</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.Kategori == "Diğer")
+        {
+            renk = "bg-info text-white";
+        }
+        if (item.Kategori == "Diğer Duyurular")
+        {
+            renk = "bg-info text-white";
+        }
+        if (item.Kategori == "Diger")
+        {
+            renk = "bg-info text-white";
+        }
+        if (item.Kategori == "Yeni Kitap")
+        {
+            renk = "bg-warning text-white";
+        }
+        if (item.Kategori == "İletişim")
+        {
+            renk = "bg-success text-white";
+        }
+        if (item.Kategori == "Kitapları Geciktirmeyin")
+        {
+            renk = "bg-danger text-white";
+        }
+
+        count++;
+        <tr class="@renk">
+            <td>@count</td>
+            <td>@item.Kategori</td>
+            <td>@(((DateTime)item.Tarih).ToString("dd-MM-yyyy"))</td>
+            <td><a href="/Duyuru/DuyuruSil/@item.DuyuruID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Duyuru/DuyuruDetay/@item.DuyuruID" class="btn btn-default" style="background-color: skyblue; color: white;">Detaylar</a></td>
+        </tr>
+    }
+
+</table>
+
+<a class="btn btn-primary" href="/Duyuru/DuyuruEkle">Yeni Duyuru Ekle</a>
+

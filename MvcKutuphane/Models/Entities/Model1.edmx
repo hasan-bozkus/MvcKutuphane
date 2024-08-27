@@ -16,6 +16,15 @@
           <Property Name="Para" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Hareket" Type="int" />
         </EntityType>
+        <EntityType Name="Duyurular">
+          <Key>
+            <PropertyRef Name="DuyuruID" />
+          </Key>
+          <Property Name="DuyuruID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="Icerik" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Hakkimizda">
@@ -220,6 +229,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
         <Function Name="EnFazlaKitapYazar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MvcKutuphaneYonetimSistemiModelStoreContainer">
           <EntitySet Name="Cezalar" EntityType="Self.Cezalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Duyurular" EntityType="Self.Duyurular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hareketler" EntityType="Self.Hareketler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Iletisim" EntityType="Self.Iletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kasa" EntityType="Self.Kasa" Schema="dbo" store:Type="Tables" />
@@ -495,6 +505,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <FunctionImport Name="EnBasariliPersonel" ReturnType="Collection(String)" />
           <FunctionImport Name="BugunEmanetVerilenKitapSayisi" ReturnType="Collection(Int32)" />
           <EntitySet Name="Mesajlar" EntityType="MvcKutuphaneYonetimSistemiModel.Mesajlar" />
+          <EntitySet Name="Duyurular" EntityType="MvcKutuphaneYonetimSistemiModel.Duyurular" />
         </EntityContainer>
         <Association Name="FK_Hareketler_Personel">
           <End Type="MvcKutuphaneYonetimSistemiModel.Personel" Role="Personel" Multiplicity="0..1" />
@@ -535,6 +546,15 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Duyurular">
+          <Key>
+            <PropertyRef Name="DuyuruID" />
+          </Key>
+          <Property Name="DuyuruID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Icerik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -678,6 +698,16 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
                 <ScalarProperty Name="Alici" ColumnName="Alici" />
                 <ScalarProperty Name="Gonderen" ColumnName="Gonderen" />
                 <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duyurular">
+            <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Duyurular">
+              <MappingFragment StoreEntitySet="Duyurular">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+                <ScalarProperty Name="DuyuruID" ColumnName="DuyuruID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
