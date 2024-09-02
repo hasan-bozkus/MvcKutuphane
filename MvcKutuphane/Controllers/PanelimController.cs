@@ -8,12 +8,12 @@ using System.Web.Security;
 
 namespace MvcKutuphane.Controllers
 {
+    [Authorize]
     public class PanelimController : Controller
     {
 
         MvcKutuphaneYonetimSistemiEntities db = new MvcKutuphaneYonetimSistemiEntities();
 
-        [Authorize]
         [HttpGet]
         public ActionResult Index()
         {
