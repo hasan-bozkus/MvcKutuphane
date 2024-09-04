@@ -41,5 +41,10 @@ namespace MvcKutuphane.Controllers
             var values = db.Mesajlar.Where(x => x.Gonderen == memberMail.ToString()).ToList();
             return View(values);
         }
+
+        public PartialViewResult Partial1()
+        {
+            return PartialView();
+        }
     }
 }

@@ -18,8 +18,39 @@ namespace MvcKutuphane.Controllers
         public ActionResult Index()
         {
             var memberMail = (string)Session["Email"];
-            var values = db.Uyeler.FirstOrDefault(z => z.EMail == memberMail);
+            //var values = db.Uyeler.FirstOrDefault(z => z.EMail == memberMail);
+            var values = db.Duyurular.ToList();
 
+            var memberName = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.UyeAd).FirstOrDefault();
+            ViewBag.memberName = memberName;
+
+            var memberSurname = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.UyeSoyad).FirstOrDefault();
+            ViewBag.memberSurname = memberSurname;
+
+            var memberImage = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.Fotograf).FirstOrDefault();
+            ViewBag.memberImage = memberImage;
+
+            var userName = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.KullaniciAd).FirstOrDefault();
+            ViewBag.userName = userName;
+
+            var memberSchool = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.UyeOkul).FirstOrDefault();
+            ViewBag.memberSchool = memberSchool;
+
+            var memberPhone = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.Telefon).FirstOrDefault();
+            ViewBag.memberPhone = memberPhone;
+
+            var memberEMail = db.Uyeler.Where(x => x.EMail == memberMail).Select(y => y.EMail).FirstOrDefault();
+            ViewBag.memberEMail = memberEMail;
+
+            var memberID = db.Uyeler.Where(x => x.EMail == memberEMail).Select(y => y.UyeID).FirstOrDefault();
+            var bookReceivedCount = db.Hareketler.Where(x => x.Uye == memberID).Count();
+            ViewBag.bookReceivedCount = bookReceivedCount;
+
+            var receivedMail = db.Mesajlar.Where(x => x.Alici == memberMail).Count();
+            ViewBag.receivedMail = receivedMail;
+
+            var AnnouncementCount = db.Duyurular.Count();
+            ViewBag.AnnouncementCount = AnnouncementCount;
             return View(values);
         }
 
@@ -56,6 +87,19 @@ namespace MvcKutuphane.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("GirisYap", "Login");
+        }
+
+        public PartialViewResult Partial1()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult Partial2()
+        {
+            var memberMail = (string)Session["Email"];
+            var memberId = db.Uyeler.Where(x => x.EMail == memberMail).Select(y =>y.UyeID).FirstOrDefault();
+            var values = db.Uyeler.Find(memberId);
+            return PartialView("Partial2", values);
         }
     }
 }

@@ -1,0 +1,57 @@
+﻿
+@{ 
+    string color = "";
+}
+
+@foreach (var item in Model)
+{
+
+    if (item.Kategori == "Diğer")
+    {
+        color = "bg-info text-white";
+    }
+    if (item.Kategori == "Diğer Duyurular")
+    {
+        color = "bg-info text-white";
+    }
+    if (item.Kategori == "Diger")
+    {
+        color = "bg-info text-white";
+    }
+    if (item.Kategori == "Yeni Kitap")
+    {
+        color = "bg-warning text-white";
+    }
+    if (item.Kategori == "İletişim")
+    {
+        color = "bg-success text-white";
+    }
+    if (item.Kategori == "Kitapları Geciktirmeyin")
+    {
+        color = "bg-danger text-white";
+    }
+
+    <div class="post">
+
+        <div class="user-block">
+
+            <img class="img-circle img-bordered-sm @color" src="~/AdminLTE-3.0.4/dist/img/2.png" alt="user image">
+
+            <span class="username @color">
+
+                <a href="#">@item.Kategori</a>
+
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+
+            </span>
+
+            <span class="description">@(((DateTime)item.Tarih).ToString("dd-MMM-yyyy"))</span>
+
+        </div>
+
+        <p>@item.Icerik
+        </p>
+     
+    </div>
+
+}
