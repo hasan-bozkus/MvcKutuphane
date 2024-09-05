@@ -44,6 +44,11 @@ namespace MvcKutuphane.Controllers
 
         public PartialViewResult Partial1()
         {
+            var memberMail = (string)Session["EMail"].ToString();
+            var gelenSayisi = db.Mesajlar.Where(x => x.Alici == memberMail).Count();
+            ViewBag.gelenSayisi = gelenSayisi;
+            var gidenSayisi = db.Mesajlar.Where(x => x.Gonderen == memberMail).Count();
+            ViewBag.gidenSayisi = gidenSayisi;
             return PartialView();
         }
     }
