@@ -1,0 +1,31 @@
+﻿@model MvcKutuphane.Models.Entities.Admin
+@{
+    ViewBag.Title = "AdminGuncelle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AdminGuncelle", "Ayarlar", FormMethod.Post))
+{
+    <div style="margin-bottom:15px;"></div>
+    <div class="form-group">
+
+        @Html.HiddenFor(x => x.AdminID)
+
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(x => x.Kullanici, new { @Class = "form-control" })
+        <br />
+
+        <label>Şifre</label>
+        @Html.TextBoxFor(x => x.Sifre, new { @Class = "form-control" })
+        <br />
+
+        <label>Yetki</label>
+        @Html.TextBoxFor(x => x.Yetki, new { @Class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-success"> Kaydet </button>
+    </div>
+}
+
+

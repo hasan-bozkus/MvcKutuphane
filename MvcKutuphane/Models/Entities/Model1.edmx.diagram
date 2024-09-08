@@ -25,6 +25,7 @@
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Iletisim" Width="1.5" PointX="1" PointY="8" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Mesajlar" Width="1.5" PointX="3.625" PointY="8.625" />
         <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Duyurular" Width="1.5" PointX="10.625" PointY="2" />
+        <EntityTypeShape EntityType="MvcKutuphaneYonetimSistemiModel.Admin" Width="1.5" PointX="10.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

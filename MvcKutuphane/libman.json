@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "jquery@3.7.1",
+      "destination": "Scripts/jquery/",
+      "files": [
+        "dist/jquery.js"
+      ]
+    }
+  ]
+}

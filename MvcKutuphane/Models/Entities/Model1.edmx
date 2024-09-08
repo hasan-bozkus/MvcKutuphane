@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MvcKutuphaneYonetimSistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanici" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="Yetki" Type="char" MaxLength="1" />
+        </EntityType>
         <EntityType Name="Cezalar">
           <Key>
             <PropertyRef Name="CezaID" />
@@ -228,6 +237,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
         <Function Name="EnCokOkunanKitap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="EnFazlaKitapYazar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MvcKutuphaneYonetimSistemiModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cezalar" EntityType="Self.Cezalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Duyurular" EntityType="Self.Duyurular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hareketler" EntityType="Self.Hareketler" Schema="dbo" store:Type="Tables" />
@@ -506,6 +516,7 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <FunctionImport Name="BugunEmanetVerilenKitapSayisi" ReturnType="Collection(Int32)" />
           <EntitySet Name="Mesajlar" EntityType="MvcKutuphaneYonetimSistemiModel.Mesajlar" />
           <EntitySet Name="Duyurular" EntityType="MvcKutuphaneYonetimSistemiModel.Duyurular" />
+          <EntitySet Name="Admin" EntityType="MvcKutuphaneYonetimSistemiModel.Admin" />
         </EntityContainer>
         <Association Name="FK_Hareketler_Personel">
           <End Type="MvcKutuphaneYonetimSistemiModel.Personel" Role="Personel" Multiplicity="0..1" />
@@ -555,6 +566,15 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
           <Property Name="Kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Icerik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanici" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Yetki" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -708,6 +728,16 @@ warning 6002: The table/view 'MvcKutuphaneYonetimSistemi.dbo.Hakkimizda' does no
                 <ScalarProperty Name="Icerik" ColumnName="Icerik" />
                 <ScalarProperty Name="Kategori" ColumnName="Kategori" />
                 <ScalarProperty Name="DuyuruID" ColumnName="DuyuruID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="MvcKutuphaneYonetimSistemiModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Kullanici" ColumnName="Kullanici" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,10 +7,12 @@ using System.Web.Mvc;
 
 namespace MvcKutuphane.Controllers
 {
+
     public class OduncController : Controller
     {
         MvcKutuphaneYonetimSistemiEntities db = new MvcKutuphaneYonetimSistemiEntities();
 
+        [Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var values = db.Hareketler.Where(x=>x.İslemDurum == false).ToList();
