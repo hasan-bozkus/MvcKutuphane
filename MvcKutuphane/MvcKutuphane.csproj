@@ -2096,6 +2096,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery\dist\jquery.js" />
     <Content Include="TextFile1.txt" />
+    <Content Include="Web config Mvc Kütüphane.txt" />
     <Content Include="web2\css\bootstrap.css" />
     <Content Include="web2\css\clndr.css" />
     <Content Include="web2\css\jqvmap.css" />

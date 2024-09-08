@@ -99,6 +99,7 @@ namespace MvcKutuphane.Controllers
 			result.Kategori = category.KategoriID;
 			result.Yazar = writer.YazarID;
 			result.Durum = true;
+			result.KitapResim = kitap.KitapResim;
 			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
